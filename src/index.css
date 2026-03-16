@@ -1,0 +1,83 @@
+/* CSS Reset and Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #39C6C6;
+  --dark-background: #0B1F2E;
+  --section-background: #102A3A;
+  --accent-highlight: #7FE7E7;
+  --main-text: #EAFBFB;
+  --secondary-text: #9FBFC0;
+  --borders-lines: #2A4A5E;
+
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: var(--main-text);
+  background-color: var(--dark-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--dark-background);
+  color: var(--main-text);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(57, 198, 198, 0.25);
+  color: var(--main-text);
+}
+
+::placeholder { color: transparent; }
+
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button { font-family: inherit; cursor: pointer; }
+ul { list-style: none; }
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
