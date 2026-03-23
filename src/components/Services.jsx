@@ -9,21 +9,21 @@ import roboticsImg  from '../assets/robotics.jpg';
 import './Services.css';
 
 const softwareServices = [
-  { icon: <FaGlobe />, title: 'Web Development', description: 'Custom web applications built with modern technologies for optimal performance' },
-  { icon: <FaMobileAlt />, title: 'Mobile Apps', description: 'Native and cross-platform mobile applications for iOS and Android' },
-  { icon: <FaCloud />, title: 'Cloud Solutions', description: 'Scalable cloud infrastructure and migration services for your business' },
-  { icon: <FaRobot />, title: 'AI & ML', description: 'Intelligent solutions powered by artificial intelligence and ML algorithms' },
-  { icon: <FaLock />, title: 'Cybersecurity', description: 'Comprehensive security solutions to protect your digital assets' },
-  { icon: <FaBriefcase />, title: 'Enterprise Software', description: 'Tailored enterprise solutions to streamline your business operations' },
+  { icon: <FaGlobe />, title: 'Web Application Development', description: 'Architecting and building scalable, high-performance web applications using modern frameworks.' },
+  { icon: <FaMobileAlt />, title: 'Mobile Application Development', description: 'Crafting intuitive and engaging native and cross-platform mobile apps for iOS and Android.' },
+  { icon: <FaCloud />, title: 'Cloud & DevOps', description: 'Cloud infrastructure design, serverless architecture, and CI/CD pipeline implementation.' },
+  { icon: <FaRobot />, title: 'AI & Machine Learning', description: 'Developing intelligent systems with predictive analytics and data-driven insights.' },
+  { icon: <FaLock />, title: 'Cybersecurity Services', description: 'Implementing robust security protocols and threat mitigation strategies to protect digital assets.' },
+  { icon: <FaBriefcase />, title: 'Enterprise Solutions', description: 'Custom software solutions to optimize enterprise workflows and drive business growth.' },
 ];
 
 const hardwareServices = [
-  { icon: <FaDesktop />, title: 'Hardware Design', description: 'Custom hardware design and prototyping for your unique requirements' },
-  { icon: <FaNetworkWired />, title: 'IoT Solutions', description: 'Internet of Things devices and connectivity solutions' },
-  { icon: <FaMicrochip />, title: 'Embedded Systems', description: 'Specialized embedded systems development for various applications' },
-  { icon: <FaCogs />, title: 'Hardware Integration', description: 'Seamless integration of hardware components with software systems' },
-  { icon: <FaServer />, title: 'Network Infrastructure', description: 'Design and implementation of robust network infrastructure' },
-  { icon: <FaWrench />, title: 'Maintenance & Support', description: '24/7 hardware maintenance and technical support services' },
+  { icon: <FaDesktop />, title: 'PCB Design & Prototyping', description: 'Custom PCB design, layout, and rapid prototyping for electronic hardware solutions.' },
+  { icon: <FaNetworkWired />, title: 'IoT & Edge Computing', description: 'End-to-end IoT solutions, from sensor integration to edge data processing.' },
+  { icon: <FaMicrochip />, title: 'Embedded Systems', description: 'Firmware and software development for microcontrollers and embedded devices.' },
+  { icon: <FaCogs />, title: 'System Integration', description: 'Seamless integration of hardware components and software for cohesive systems.' },
+  { icon: <FaServer />, title: 'Network Infrastructure', description: 'Design and deployment of robust and scalable network architectures.' },
+  { icon: <FaWrench />, title: 'Sustaining Engineering', description: 'Ongoing maintenance, support, and lifecycle management for hardware products.' },
 ];
 
 const Services = () => {
@@ -54,13 +54,13 @@ const Services = () => {
             className={`srv-tab ${active === 'software' ? 'active' : ''}`}
             onClick={() => setActive('software')}
           >
-            <FaLaptopCode /> Software Projects
+            <FaLaptopCode /> Software Services
           </button>
           <button
             className={`srv-tab ${active === 'hardware' ? 'active' : ''}`}
             onClick={() => setActive('hardware')}
           >
-            <FaMicrochip /> Hardware Projects
+            <FaMicrochip /> Hardware Services
           </button>
         </div>
 

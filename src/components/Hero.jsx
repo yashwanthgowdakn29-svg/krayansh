@@ -37,11 +37,7 @@ const Hero = () => {
           </div>
 
           <div className="hero-stats">
-            <div className="stat"><span className="snum">5+</span><span className="slbl">Years</span></div>
-            <div className="stat-divider" />
-            <div className="stat"><span className="snum">100+</span><span className="slbl">Projects</span></div>
-            <div className="stat-divider" />
-            <div className="stat"><span className="snum">50+</span><span className="slbl">Clients</span></div>
+            
           </div>
         </div>
 

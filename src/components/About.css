@@ -193,7 +193,9 @@
 /* ── STATS ── */
 .about-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: 300px;
+  margin: 0 auto;
   border: 1px solid var(--borders-lines);
   border-radius: 12px;
   overflow: hidden;

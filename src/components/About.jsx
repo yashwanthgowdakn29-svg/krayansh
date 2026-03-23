@@ -27,9 +27,6 @@ const pillars = [
 ];
 
 const stats = [
-  { num: '5+', label: 'Years of Experience' },
-  { num: '100+', label: 'Projects Delivered' },
-  { num: '50+', label: 'Happy Clients' },
   { num: '24/7', label: 'Support Available' },
 ];
 
