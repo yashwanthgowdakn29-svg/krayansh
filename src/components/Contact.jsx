@@ -3,7 +3,7 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaLinkedinIn, FaTwitter, 
 import './Contact.css';
 
 const infoItems = [
-  { icon: <FaMapMarkerAlt />, label: 'Address', value: '123 Tech Street, Innovation City, IN 12345' },
+  { icon: <FaMapMarkerAlt />, label: 'Address', value: 'No 34,6e Main Road, 2nd, Phase Bovipalya, Nagapura, Mahalakshmipuram Layout, Bangalore, Bangalore North, Karnataka, India, 560086.' },
   { icon: <FaPhone />, label: 'Phone', value: '+91 9886581294' },
   { icon: <FaEnvelope />, label: 'Email', value: 'info@krayansh.com' },
   { icon: <FaClock />, label: 'Business Hours', value: 'Mon – Sat: 9:00 AM – 6:00 PM' },
