@@ -76,10 +76,10 @@ const About = () => (
             <div className="about-img-overlay" />
           </div>
           <div className="about-img-tag about-img-tag--tl">
-            <span className="about-tag-dot" /> Krayansh Technologies
+            <span className="about-tag-dot" /> Krayansh 
           </div>
           <div className="about-img-tag about-img-tag--br">
-            <span className="about-tag-dot" /> Est. 2020
+            <span className="about-tag-dot" /> Est. 2026
           </div>
         </div>
       </div>
