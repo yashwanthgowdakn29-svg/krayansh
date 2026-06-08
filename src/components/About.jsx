@@ -72,7 +72,7 @@ const About = () => (
         <div className="about-img-frame">
           <div className="about-img-card-border" aria-hidden="true" />
           <div className="about-img-col">
-            <img src={aboutBanner} alt="About Krayansh" className="about-banner-img" />
+            <img src={aboutBanner} alt="About Krayansh" className="about-banner-img" loading="lazy" decoding="async" />
             <div className="about-img-overlay" />
           </div>
           <div className="about-img-tag about-img-tag--tl">
@@ -89,7 +89,7 @@ const About = () => (
         {pillars.map((p) => (
           <div className="pillar" key={p.num}>
             <div className="pillar-img-wrap">
-              <img src={p.img} alt={p.title} className="pillar-img" />
+              <img src={p.img} alt={p.title} className="pillar-img" loading="lazy" decoding="async" />
               <div className="pillar-img-overlay" />
               <span className="pillar-num" aria-hidden="true">{p.num}</span>
             </div>

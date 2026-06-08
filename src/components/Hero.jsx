@@ -21,12 +21,14 @@ const Hero = () => {
   return (
     <section className="hero" id="home">
       {/* Background layers */}
+      
       <div className="hero-bg-grid" />
       <div className="hero-bg-glow" aria-hidden="true" />
 
       <div className="hero-layout">
         {/* Left: Content */}
         <div className="hero-content">
+          
           <span className="hero-tag">✦ Technology &amp; Innovation</span>
 
           <h1 className="hero-title">
@@ -61,7 +63,7 @@ const Hero = () => {
         <div className="hero-art">
           <div className="hero-img-card">
             <div className="hero-img-card-border" aria-hidden="true" />
-            <img src={bannerImg} alt="Krayansh Technology" className="hero-img" />
+            <img src={bannerImg} alt="Krayansh Technology" className="hero-img" loading="eager" fetchPriority="high" decoding="async" />
             <div className="hero-img-shine" aria-hidden="true" />
             <div className="hero-floating-tag hero-floating-tag--tl">
               <span className="hft-dot" />

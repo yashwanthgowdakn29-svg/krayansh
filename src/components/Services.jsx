@@ -70,6 +70,8 @@ const Services = () => {
             src={active === 'software' ? expertiseImg : roboticsImg}
             alt={active === 'software' ? 'Software Expertise' : 'Hardware & Robotics'}
             className="srv-visual-img"
+            loading="lazy"
+            decoding="async"
             key={active}
           />
           <div className="srv-visual-overlay">
