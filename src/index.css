@@ -8,19 +8,19 @@
 }
 
 :root {
-  --primary-color: #39C6C6;
-  --dark-background: #0B1F2E;
-  --section-background: #102A3A;
-  --accent-highlight: #7FE7E7;
-  --main-text: #EAFBFB;
-  --secondary-text: #9FBFC0;
-  --borders-lines: #2A4A5E;
+  --primary-color: #0EA5A5;
+  --dark-background: #F6FAFB;
+  --section-background: #FFFFFF;
+  --accent-highlight: #39C6C6;
+  --main-text: #102332;
+  --secondary-text: #5D7482;
+  --borders-lines: #D6E5EA;
 
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
+  color-scheme: light;
   color: var(--main-text);
   background-color: var(--dark-background);
 
@@ -47,7 +47,7 @@ body {
 }
 
 ::selection {
-  background: rgba(57, 198, 198, 0.25);
+  background: rgba(14, 165, 165, 0.18);
   color: var(--main-text);
 }
 
