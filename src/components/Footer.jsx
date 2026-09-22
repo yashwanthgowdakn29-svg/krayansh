@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaEnvelope, FaInstagram, FaPhone } from 'react-icons/fa';
-import logo from '../assets/Logo.png';
+import logo from '../assets/Logo3.png';
 import { legalContent } from '../data/legal';
 import { services } from '../data/services';
 
@@ -65,8 +65,8 @@ const Footer = () => {
               <ul>
                 {[
                   ['/#home', 'Home'],
-                  ['/#about', 'About'],
-                  ['/#services', 'Services'],
+                  ['/#company', 'Company'],
+                  ['/#capabilities', 'Capabilities'],
                   ['/#contact', 'Contact'],
                 ].map(([href, label]) => (
                   <li key={href}><Link href={href} className="flink">{label}</Link></li>

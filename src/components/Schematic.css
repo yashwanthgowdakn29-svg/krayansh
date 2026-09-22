@@ -1,0 +1,200 @@
+/* ══════════════════════════════════════════════════════════════════════
+   KRAYANSH · SCHEMATIC DESIGN LAYER
+   A technical/engineering visual language built on the existing token
+   system. Loaded last, so it restyles without touching earlier files —
+   remove the import in app/layout.jsx to revert.
+
+   Motion is SVG + CSS only (no WebGL/canvas), so LCP is unaffected and
+   everything collapses cleanly under prefers-reduced-motion.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --sch-trace:rgba(var(--sig-glow-rgb),.62);
+  --sch-trace-dim:rgba(var(--sig-glow-rgb),.3);
+  --sch-grid:rgba(var(--sig-glow-rgb),.07);
+  --sch-grid-light:rgba(var(--sig-accent-rgb),.07);
+  --sch-bracket:rgba(var(--sig-glow-rgb),.45);
+  --sch-ease:cubic-bezier(.22,1,.36,1);
+}
+
+/* ── Typography ─────────────────────────────────────────────────────── */
+/* Display face is now a grotesk. Kill every serif-era italic treatment. */
+.sig-hero-content h1,.sig-statement h2,.sig-section-intro h2,
+.sig-architecture-aside h2,.sig-innovation-copy h2,.sig-close-content h2,
+.sig-cap-main h3,.sig-method-grid h3,.sig-evolution h3,
+.sig-system-core-content h3,.sig-statement-bottom strong,
+.seo-hero h1,.seo-content-section h2,.seo-related h2,
+.legal-page-content h2,.seo-related-grid h3,.ct-title{
+  font-family:var(--font-display),"Segoe UI",sans-serif;
+  font-weight:600;
+  font-style:normal;
+  letter-spacing:-.035em;
+}
+.sig-hero-content h1{font-size:clamp(3rem,5vw,5.4rem);font-weight:700;line-height:1.02;letter-spacing:-.045em}
+.sig-hero-content h1 em,.sig-statement h2 em,.sig-section-intro h2 em,
+.sig-architecture-aside h2 em,.sig-innovation-copy h2 em,
+.sig-system-core-content h3 em{font-style:normal;font-weight:700}
+.sig-statement h2{font-size:clamp(2.1rem,3.6vw,3.6rem);line-height:1.14}
+.sig-section-intro h2{font-size:clamp(2rem,3.1vw,3.1rem);line-height:1.12}
+.sig-architecture-aside h2,.sig-innovation-copy h2{font-size:clamp(2rem,3vw,3.1rem);line-height:1.12}
+.sig-close-content h2{font-size:clamp(2.1rem,3.7vw,3.7rem);line-height:1.1}
+.sig-cap-main h3{font-size:1.3rem;font-weight:600}
+.sig-method-grid h3{font-size:1.2rem}
+.seo-hero h1{font-size:clamp(2.4rem,4.6vw,4.4rem);line-height:1.04}
+
+/* Numerals, eyebrows and spec labels become monospace annotation. */
+.sig-eyebrow,.seo-eyebrow,.ct-eyebrow,.sig-cap-num,.sig-method-grid span,
+.sig-statement-bottom span,.sig-art-number,.sig-system-bar,.sig-system-footer,
+.sig-hero-foot,.sig-evolution span,.sig-system-layers article>span,
+.sig-evolution-label,.sig-art-signal,.sig-art-note span,.fcol-title,
+.sig-statement-figure figcaption,.seo-breadcrumbs{
+  font-family:var(--font-mono),ui-monospace,monospace;
+  font-weight:500;
+}
+.sig-eyebrow,.seo-eyebrow,.ct-eyebrow{font-size:.66rem;letter-spacing:.14em}
+.sig-eyebrow>span{width:18px}
+.sig-cap-num,.sig-statement-bottom span{font-size:.95rem;font-style:normal;font-weight:700}
+.sig-method-grid span{font-size:.68rem;font-weight:700}
+
+/* Eyebrows get a technical prefix rather than a plain rule. */
+.sig-eyebrow-blue:before,.seo-eyebrow:before{content:'// ';opacity:.55}
+
+/* ── Blueprint ground ───────────────────────────────────────────────── */
+.sig-statement,.sig-method,.sig-capabilities,.sig-close,.contact{position:relative;isolation:isolate}
+.sig-statement:after,.sig-method:after,.sig-capabilities:after,
+.sig-close:after,.contact:after{
+  content:'';position:absolute;z-index:-1;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--sch-grid-light) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--sch-grid-light) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 78%);
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 78%);
+}
+
+/* ── Registration brackets ──────────────────────────────────────────── */
+.sch-frame{position:relative}
+.sch-frame:before,.sch-frame:after{
+  content:'';position:absolute;width:12px;height:12px;pointer-events:none;
+  border-color:var(--sch-bracket);border-style:solid;border-width:0;
+}
+.sch-frame:before{top:-1px;left:-1px;border-top-width:1px;border-left-width:1px}
+.sch-frame:after{bottom:-1px;right:-1px;border-bottom-width:1px;border-right-width:1px}
+
+/* ── Hero ───────────────────────────────────────────────────────────── */
+.sig-hero-wrap{min-height:600px}
+.sch-hero-traces{position:absolute;z-index:1;left:0;top:0;width:min(64%,760px);height:100%;pointer-events:none}
+.sch-hero-traces path{fill:none;stroke:var(--sch-trace-dim);stroke-width:1;stroke-linecap:square;stroke-linejoin:miter}
+/* Draw the run once on load. */
+.sch-hero-traces .sch-live{stroke:var(--sch-trace);stroke-dasharray:var(--dash,600);stroke-dashoffset:var(--dash,600);animation:sch-draw 1.9s var(--sch-ease) forwards}
+/* Two of the runs then carry a slow travelling signal. */
+.sch-hero-traces .sch-flowline{stroke:var(--sig-cyan);stroke-width:1.4;stroke-dasharray:26 620;stroke-dashoffset:0;opacity:.75;filter:drop-shadow(0 0 4px rgba(var(--sig-glow-rgb),.7));animation:sch-signal-run 7s linear infinite}
+.sch-hero-traces circle.sch-pad{fill:var(--sig-ink);stroke:var(--sch-trace);stroke-width:1;r:3.5;opacity:0;animation:sch-pad-in .5s var(--sch-ease) forwards}
+
+/* Spec rail under the hero copy. */
+.sch-specs{display:flex;flex-wrap:wrap;gap:1.6rem;margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--border-on-dark);font-family:var(--font-mono),monospace}
+.sch-spec{display:grid;gap:.3rem}
+.sch-spec dt{color:var(--sig-cyan);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase}
+.sch-spec dd{margin:0;color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:-.02em}
+
+/* ── Capability rows as spec rows ───────────────────────────────────── */
+/* The hover bleed (.sig-capability::before, inset:0 -3rem) reaches 48px past
+   the rail, which pushes the document 16px wide between ~1248-1336px. Clip it
+   at the section edge — nothing inside needs to scroll or stick. */
+.sig-capabilities{overflow-x:clip}
+.sig-capability{align-items:center}
+.sig-cap-num{position:relative;padding-left:.9rem;color:var(--accent)}
+.sig-cap-num:before{content:'';position:absolute;left:0;top:50%;width:5px;height:5px;border-radius:50%;background:var(--accent);transform:translateY(-50%);transition:box-shadow .35s var(--sch-ease)}
+.sig-capability:hover .sig-cap-num:before{box-shadow:0 0 0 4px rgba(var(--sig-accent-rgb),.18)}
+.sig-cap-media{border-radius:2px}
+.sig-cap-links a{font-family:var(--font-mono),monospace;font-size:.72rem;font-weight:500;letter-spacing:-.01em}
+
+/* ── Delivery system: node graph ────────────────────────────────────── */
+.sig-system-board{border-radius:2px}
+.sch-node-graph{position:absolute;z-index:0;inset:0;width:100%;height:100%;pointer-events:none}
+.sch-node-graph path{fill:none;stroke:var(--sch-trace-dim);stroke-width:1}
+.sch-node-graph .sch-link-live{stroke:var(--sch-trace);stroke-dasharray:4 8;animation:sch-flow 1.8s linear infinite}
+.sig-system-layers article{position:relative;border-radius:2px}
+.sig-system-layers article:after{content:'';position:absolute;top:.85rem;right:.85rem;width:5px;height:5px;border-radius:50%;background:var(--sig-cyan);opacity:.35;transition:opacity .3s,box-shadow .3s}
+.sig-system-layers article:hover:after{opacity:1;box-shadow:0 0 8px var(--sig-cyan)}
+
+/* ── Process chain ──────────────────────────────────────────────────── */
+.sig-method-grid{position:relative}
+.sig-method-grid article{position:relative}
+.sig-method-grid article>span{position:relative;display:inline-flex;align-items:center;gap:.55rem}
+.sig-method-grid article>span:after{content:'';width:26px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+/* Signal sweep travelling along the process rule. Transform-only so it stays
+   on the compositor — animating `left` would force layout every frame. */
+.sch-chain{position:absolute;left:0;right:0;top:-1px;height:2px;overflow:hidden;pointer-events:none}
+.sch-chain i{position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent 44%,var(--accent) 49%,var(--accent) 51%,transparent 56%);animation:sch-travel 6.5s var(--sch-ease) infinite}
+
+/* ── Buttons: technical, squared, with a bracket cue ────────────────── */
+.sig-primary,.seo-primary-link,.ct-submit,.nav-cta{border-radius:2px!important;font-family:var(--font-mono),monospace!important;font-size:.74rem!important;font-weight:700!important;letter-spacing:.04em!important;text-transform:uppercase}
+.sig-text-link,.sig-light-link{font-family:var(--font-mono),monospace;font-size:.7rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+
+/* ── Panels, cards, hairlines ───────────────────────────────────────── */
+.sig-art-frame,.sig-statement-figure,.sig-close-panel,.sig-evolution,
+.ct-info-card,.ct-form,.seo-benefit-grid li,.seo-related-grid a,
+.legal-page-content,.logo-mark{border-radius:2px!important}
+.sig-art-number,.sig-art-note,.sig-art-signal{border-radius:2px}
+
+/* ── Service pages ──────────────────────────────────────────────────── */
+.seo-benefit-grid li:before{content:'+';font-family:var(--font-mono),monospace;font-weight:700}
+.seo-related-grid span{font-family:var(--font-mono),monospace;font-size:.7rem;letter-spacing:.04em;text-transform:uppercase}
+/* The masthead was a fixed 500px band (.seo-page::before) that could not know
+   how tall the hero actually is — the spec rail pushed content straight past
+   it onto white. Anchor the dark field to the hero instead: full-bleed
+   horizontally, and overshooting upward far enough to always reach the top of
+   the page (the overshoot is clipped by .seo-page's overflow:hidden). */
+.seo-page:before,.seo-page:after{display:none}
+.seo-hero{position:relative}
+.seo-hero:before{
+  content:'';position:absolute;z-index:-1;
+  top:-340px;bottom:0;left:-50vw;right:-50vw;
+  background-color:var(--n-900);
+  background-image:var(--sig-grain-dim);
+  background-size:160px 160px;
+}
+.seo-hero:after{
+  content:'';position:absolute;z-index:-1;pointer-events:none;
+  right:-190px;top:-260px;width:600px;height:600px;
+  border:1px solid var(--sch-trace-dim);border-radius:50%;
+}
+/* Blueprint ground on the light half. The dark hero band is an opaque
+   ::before, so it masks the grid where it should not show. */
+.seo-page{
+  background-color:var(--surface-page);
+  background-image:linear-gradient(var(--sch-grid-light) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--sch-grid-light) 1px,transparent 1px);
+  background-size:72px 72px;
+}
+.seo-hero .sch-specs{margin-top:2.2rem}
+.seo-content-section h2,.seo-related h2{font-size:clamp(1.7rem,2.5vw,2.4rem)}
+@media(max-width:700px){.seo-page{background-size:48px 48px}}
+
+/* ── Keyframes ──────────────────────────────────────────────────────── */
+@keyframes sch-draw{to{stroke-dashoffset:0}}
+@keyframes sch-flow{to{stroke-dashoffset:-24}}
+@keyframes sch-travel{to{transform:translateX(100%)}}
+@keyframes sch-pad-in{to{opacity:1}}
+@keyframes sch-signal-run{from{stroke-dashoffset:646}to{stroke-dashoffset:-26}}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media(max-width:1000px){
+  .sch-hero-traces{display:none}
+  .sch-specs{gap:1.2rem;margin-top:2rem}
+}
+@media(max-width:700px){
+  .sch-specs{gap:1rem}
+  .sch-spec dd{font-size:.92rem}
+  .sig-statement:after,.sig-method:after,.sig-capabilities:after,
+  .sig-close:after,.contact:after{background-size:48px 48px}
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  .sch-hero-traces .sch-live{stroke-dashoffset:0;animation:none}
+  .sch-hero-traces .sch-flowline{display:none}
+  .sch-hero-traces circle.sch-pad{opacity:1;animation:none}
+  .sch-node-graph .sch-link-live{animation:none}
+  .sch-chain{display:none}
+}

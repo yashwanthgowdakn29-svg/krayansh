@@ -1,14 +1,25 @@
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
-import '../src/index.css';
-import '../src/App.css';
-import '../src/components/Header.css';
-import '../src/components/Hero.css';
-import '../src/components/About.css';
-import '../src/components/Services.css';
-import '../src/components/Contact.css';
-import '../src/components/Footer.css';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import SiteHeader from '../src/components/site/SiteHeader';
+import SiteFooter from '../src/components/site/SiteFooter';
+import '../src/styles/theme.css';
+import '../src/styles/template.css';
 import './seo-pages.css';
+
+/* Geometric grotesk for display, Inter for running text — the pairing the
+   reference design uses for its headline/body contrast. */
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
 
 const siteUrl = 'https://krayansh.com';
 
@@ -32,9 +43,7 @@ export const metadata = {
   authors: [{ name: 'Krayansh', url: siteUrl }],
   creator: 'Krayansh',
   publisher: 'Krayansh',
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
@@ -59,18 +68,25 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#f6fafb',
+  themeColor: '#060d1d',
   colorScheme: 'light',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN">
+    <html lang="en-IN" className={`${jakarta.variable} ${inter.variable}`}>
+      <head>
+        {/* Reveal-on-scroll needs IntersectionObserver; without JS the
+            observer never runs, so make sure nothing stays invisible. */}
+        <noscript>
+          <style>{'.reveal{opacity:1 !important;transform:none !important}'}</style>
+        </noscript>
+      </head>
       <body>
         <div className="app">
-          <Header />
+          <SiteHeader />
           {children}
-          <Footer />
+          <SiteFooter />
         </div>
       </body>
     </html>

@@ -1,0 +1,133 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Krayansh design system — navy / electric-blue corporate theme.
+
+   Layer 1: raw ramps.  Layer 2: semantic tokens components reference.
+   Layer 3: aliases kept alive for the service + legal pages so they
+   inherit this palette without being rewritten.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* ---- Ramps ---- */
+  --kg-navy-950: #03060f;
+  --kg-navy-900: #060d1d;
+  --kg-navy-850: #08142b;
+  --kg-navy-800: #0b1c3a;
+  --kg-navy-700: #12294f;
+
+  --kg-blue-200: #bcd6ff;
+  --kg-blue-300: #7db4ff;
+  --kg-blue-400: #4d92ff;   /* 6.2:1 on navy — safe for small text on dark */
+  --kg-blue-500: #1a6dff;   /* brand blue, dark surfaces + large type */
+  --kg-blue-600: #1560e8;   /* 5.4:1 behind white — buttons and links on paper */
+  --kg-blue-700: #0f4bbd;
+  --kg-cyan: #3fd8e8;
+
+  --kg-paper: #f5f8fd;
+  --kg-paper-2: #eef3fb;
+  --kg-white: #ffffff;
+  --kg-line: #e3eaf5;
+  --kg-line-strong: #cfd9ea;
+
+  --kg-ink: #08142b;
+  --kg-ink-2: #33425c;
+  --kg-muted: #61708c;      /* 5.0:1 on white */
+
+  /* ---- Semantic ---- */
+  --kg-bg: var(--kg-paper);
+  --kg-surface: var(--kg-white);
+  --kg-dark: var(--kg-navy-900);
+  --kg-dark-2: var(--kg-navy-850);
+  --kg-accent: var(--kg-blue-600);
+  --kg-accent-bright: var(--kg-blue-500);
+  --kg-accent-on-dark: var(--kg-blue-400);
+  --kg-text-on-dark: rgba(255, 255, 255, 0.74);
+  --kg-border-on-dark: rgba(255, 255, 255, 0.12);
+
+  --kg-accent-rgb: 26, 109, 255;
+  --kg-cyan-rgb: 63, 216, 232;
+
+  --kg-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --kg-radius: 14px;
+  --kg-radius-sm: 10px;
+  --kg-rail: 1240px;
+  --kg-shadow-card: 0 1px 2px rgba(8, 20, 43, 0.04), 0 12px 30px rgba(8, 20, 43, 0.06);
+  --kg-shadow-lift: 0 2px 4px rgba(8, 20, 43, 0.05), 0 24px 54px rgba(8, 20, 43, 0.12);
+  --kg-shadow-blue: 0 10px 26px rgba(var(--kg-accent-rgb), 0.32);
+  --kg-shadow-blue-hover: 0 16px 38px rgba(var(--kg-accent-rgb), 0.42);
+
+  /* ---- Layer 3: aliases consumed by app/seo-pages.css ---- */
+  --n-600: var(--kg-ink-2);
+  --n-900: var(--kg-ink);
+  --surface-page: var(--kg-paper);
+  --surface-raised: var(--kg-white);
+  --text-secondary: var(--kg-muted);
+  --text-inverse-2: var(--kg-text-on-dark);
+  --border-subtle: var(--kg-line);
+  --accent: var(--kg-accent);
+  --accent-hover: var(--kg-blue-700);
+  --accent-on-dark: var(--kg-accent-on-dark);
+  --accent-grad: linear-gradient(180deg, var(--kg-blue-500), var(--kg-blue-700));
+  --accent-grad-hover: linear-gradient(180deg, var(--kg-blue-600), var(--kg-blue-700));
+  --accent-glow: var(--kg-shadow-blue);
+  --accent-glow-hover: var(--kg-shadow-blue-hover);
+  --sig-ease: var(--kg-ease);
+  --sig-glow-rgb: var(--kg-accent-rgb);
+  --sig-grain-dim: none;
+
+  font-family: var(--font-sans), 'Segoe UI', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color-scheme: light;
+  color: var(--kg-ink);
+  background-color: var(--kg-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--kg-bg);
+  color: var(--kg-ink);
+}
+
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.app > main { flex: 1; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--kg-ink);
+  font-weight: 700;
+}
+
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+img { max-width: 100%; height: auto; display: block; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: none; }
+
+::selection { background: rgba(var(--kg-accent-rgb), 0.18); color: var(--kg-ink); }
+::placeholder { color: #98a5bb; }
+
+:focus-visible {
+  outline: 2px solid var(--kg-accent-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

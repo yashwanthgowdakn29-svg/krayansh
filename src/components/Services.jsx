@@ -22,6 +22,7 @@ import {
 import expertiseImg from '../assets/expertise.png';
 import roboticsImg from '../assets/robotics.jpg';
 import { serviceCategories, services } from '../data/services';
+import Reveal from './Reveal';
 
 const iconMap = {
   globe: FaGlobe,
@@ -46,7 +47,7 @@ const Services = () => {
   return (
     <section className="services" id="services">
       <div className="services-inner">
-        <div className="srv-header">
+        <Reveal className="srv-header">
           <div className="srv-header-left">
             <span className="srv-section-num" aria-hidden="true">02</span>
             <div>
@@ -58,7 +59,7 @@ const Services = () => {
             Software and hardware engineering services tailored to business needs,
             from application code to connected devices and circuits.
           </p>
-        </div>
+        </Reveal>
 
         <div className="srv-tabs" role="tablist" aria-label="Service categories">
           <button
@@ -79,7 +80,7 @@ const Services = () => {
           </button>
         </div>
 
-        <div className="srv-visual">
+        <Reveal className="srv-visual" delay={0.1}>
           <Image
             src={active === 'software' ? expertiseImg : roboticsImg}
             alt={active === 'software' ? 'Krayansh software engineering services' : 'Krayansh hardware and robotics services'}
@@ -91,9 +92,9 @@ const Services = () => {
           <div className="srv-visual-overlay">
             <span className="srv-visual-label">{category.visual}</span>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="srv-grid" key={active}>
+        <Reveal className="srv-grid" delay={0.15} key={active}>
           {list.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (
@@ -113,7 +114,7 @@ const Services = () => {
               </Link>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

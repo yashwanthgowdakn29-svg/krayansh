@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { FaEnvelope, FaHandshake, FaInstagram, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import Reveal from './Reveal';
 
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_vhlbhhy';
 const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_h8wbvkj';
@@ -67,17 +68,17 @@ const Contact = () => {
   return (
     <section className="contact" id="contact">
       <div className="contact-inner">
-        <div className="ct-heading">
+        <Reveal className="ct-heading">
           <span className="ct-watermark" aria-hidden="true">03</span>
           <p className="ct-eyebrow">Get In Touch</p>
           <h2 className="ct-title">
             Let&apos;s Build <br />
             <span className="ct-accent">Something Great</span>
           </h2>
-        </div>
+        </Reveal>
 
         <div className="ct-layout">
-          <div className="ct-info-card">
+          <Reveal className="ct-info-card">
             <div className="ct-info-card-glow" aria-hidden="true" />
             <p className="ct-info-intro">Reach out through any channel. We typically respond within 24 hours.</p>
 
@@ -115,9 +116,9 @@ const Contact = () => {
                 <FaInstagram />
               </a>
             </div>
-          </div>
+          </Reveal>
 
-          <form className="ct-form" onSubmit={handleSubmit}>
+          <Reveal as="form" className="ct-form" delay={0.1} onSubmit={handleSubmit}>
             <div className="ct-form-row">
               <div className="ct-field">
                 <input type="text" name="name" autoComplete="name" placeholder=" " value={formData.name} onChange={handleChange} required />
@@ -139,13 +140,13 @@ const Contact = () => {
               </div>
             </div>
             <div className="ct-field">
-              <textarea name="message" rows="5" placeholder=" " aria-label="Your Message" value={formData.message} onChange={handleChange} required />
+              <textarea name="message" rows="5" placeholder="Tell us about your idea, goals, or challenge..." aria-label="Your Message" value={formData.message} onChange={handleChange} required />
             </div>
             <button type="submit" className="ct-submit" disabled={isSubmitting}>
               {isSubmitting ? 'Sending...' : 'Send Message'} <span className="ct-submit-arrow">-&gt;</span>
             </button>
             {formStatus && <p className="ct-status" aria-live="polite">{formStatus}</p>}
-          </form>
+          </Reveal>
         </div>
       </div>
     </section>

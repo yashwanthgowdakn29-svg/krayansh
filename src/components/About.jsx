@@ -3,6 +3,7 @@ import aboutBanner from '../assets/aboutbanner.png';
 import missionImg from '../assets/mission.jpg';
 import visionImg from '../assets/vision.png';
 import valuesImg from '../assets/leadership.png';
+import Reveal from './Reveal';
 
 const pillars = [
   {
@@ -37,7 +38,7 @@ const About = () => (
 
     <div className="about-inner">
       <div className="about-split">
-        <div className="about-text-col">
+        <Reveal className="about-text-col">
           <div className="about-heading-group">
             <span className="about-eyebrow">About Us</span>
             <h2 className="about-title">
@@ -59,9 +60,9 @@ const About = () => (
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="about-img-frame">
+        <Reveal className="about-img-frame" delay={0.15}>
           <div className="about-img-card-border" aria-hidden="true" />
           <div className="about-img-col">
             <Image
@@ -78,12 +79,12 @@ const About = () => (
           <div className="about-img-tag about-img-tag--br">
             <span className="about-tag-dot" /> Bengaluru, India
           </div>
-        </div>
+        </Reveal>
       </div>
 
       <div className="pillars">
-        {pillars.map((pillar) => (
-          <article className="pillar" key={pillar.num}>
+        {pillars.map((pillar, index) => (
+          <Reveal as="article" className="pillar" delay={index * 0.1} key={pillar.num}>
             <div className="pillar-img-wrap">
               <Image
                 src={pillar.img}
@@ -99,7 +100,7 @@ const About = () => (
               <h3 className="pillar-title">{pillar.title}</h3>
               <p className="pillar-text">{pillar.text}</p>
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </div>

@@ -7,21 +7,37 @@
 }
 
 :root {
-  --primary-color: #0EA5A5;
-  --dark-background: #F6FAFB;
-  --section-background: #FFFFFF;
-  --accent-highlight: #39C6C6;
-  --main-text: #102332;
-  --secondary-text: #5D7482;
-  --borders-lines: #D6E5EA;
+  /* Warm editorial palette */
+  --bg: #f7f2e9;
+  --bg-soft: #efe5d5;
+  --surface: #fffdf8;
+  --ink: #211c16;
+  --ink-2: #46403a;
+  --ink-soft: #7a7266;
+  --accent: #c1592c;
+  --accent-deep: #9c451f;
+  --accent-soft: #f1dbc7;
+  --border: #e2d7c3;
+  --dark: #1c1712;
+  --dark-2: #2a231b;
 
-  font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* legacy aliases still referenced by a couple of shared rules */
+  --primary-color: var(--accent);
+  --dark-background: var(--bg);
+  --section-background: var(--surface);
+  --main-text: var(--ink);
+  --secondary-text: var(--ink-soft);
+  --borders-lines: var(--border);
+  --shadow-soft: 0 24px 70px rgba(33, 28, 22, 0.08);
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  font-family: var(--font-sans), "Segoe UI", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light;
-  color: var(--main-text);
-  background-color: var(--dark-background);
+  color: var(--ink);
+  background-color: var(--bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -36,8 +52,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: var(--dark-background);
-  color: var(--main-text);
+  background-color: var(--bg);
+  color: var(--ink);
 }
 
 #root {
@@ -46,11 +62,11 @@ body {
 }
 
 ::selection {
-  background: rgba(14, 165, 165, 0.18);
-  color: var(--main-text);
+  background: rgba(193, 89, 44, 0.18);
+  color: var(--ink);
 }
 
-::placeholder { color: transparent; }
+::placeholder { color: #a99f8f; }
 
 h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
 

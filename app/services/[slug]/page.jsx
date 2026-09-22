@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Icon from '../../../src/components/site/Icon';
+import HeroBackdrop from '../../../src/components/site/HeroBackdrop';
 import { getServiceBySlug, serviceCategories, services } from '../../../src/data/services';
 
 export const dynamicParams = false;
@@ -57,24 +59,45 @@ export default async function ServicePage({ params }) {
     url: `https://krayansh.com/services/${service.slug}`,
   };
 
-  return (
-    <main className="seo-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <div className="seo-page-inner">
-        <nav className="seo-breadcrumbs" aria-label="Breadcrumb">
-          <Link href="/">Home</Link>
-          <span>/</span>
-          <Link href="/#services">Services</Link>
-          <span>/</span>
-          <span aria-current="page">{service.title}</span>
-        </nav>
+  const specs = [
+    ['Discipline', serviceCategories[service.category].label],
+    ['Ref', `KR-${String(services.findIndex((item) => item.slug === service.slug) + 1).padStart(2, '0')}`],
+    ['Delivered from', 'Bengaluru, IN'],
+  ];
 
-        <header className="seo-hero">
-          <p className="seo-eyebrow">{serviceCategories[service.category].label}</p>
-          <h1>{service.title}</h1>
-          <p>{service.intro}</p>
-          <Link className="seo-primary-link" href="/#contact">Discuss Your Project</Link>
-        </header>
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+
+      <section className="kg-hero kg-hero-detail">
+        <HeroBackdrop />
+        <div className="kg-wrap kg-hero-inner kg-hero-narrow">
+          <div>
+            <nav className="kg-crumbs" aria-label="Breadcrumb">
+              <Link href="/">Home</Link>
+              <span>/</span>
+              <Link href="/services">Services</Link>
+              <span>/</span>
+              <span aria-current="page">{service.title}</span>
+            </nav>
+            <p className="kg-eyebrow">{serviceCategories[service.category].label}</p>
+            <h1>{service.title}</h1>
+            <p className="kg-hero-lead">{service.intro}</p>
+            <div className="kg-actions">
+              <Link className="kg-btn" href="/contact">Discuss Your Project <Icon name="arrow" /></Link>
+              <Link className="kg-btn-ghost" href="/services">All Services <Icon name="arrow" /></Link>
+            </div>
+            <dl className="kg-hero-meta">
+              {specs.map(([label, value]) => (
+                <div key={label}><dt>{label}</dt><dd>{value}</dd></div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <main className="seo-page seo-page-body">
+        <div className="seo-page-inner">
 
         <section className="seo-content-section" aria-labelledby="capabilities-title">
           <div>
@@ -93,12 +116,13 @@ export default async function ServicePage({ params }) {
               <Link href={`/services/${related.slug}`} key={related.slug}>
                 <h3>{related.title}</h3>
                 <p>{related.description}</p>
-                <span>Learn more -&gt;</span>
+                <span>Learn more →</span>
               </Link>
             ))}
           </div>
         </section>
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }

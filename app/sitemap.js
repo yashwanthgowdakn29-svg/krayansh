@@ -1,14 +1,23 @@
 import { services } from '../src/data/services';
 
+const pageRoutes = ['', '/about', '/services', '/solutions', '/industries', '/insights', '/careers', '/contact'];
+const legalRoutes = ['/privacy-policy', '/terms-and-conditions'];
+
 export default function sitemap() {
   const lastModified = new Date();
-  const staticRoutes = ['', '/privacy-policy', '/terms-and-conditions'];
   const serviceRoutes = services.map((service) => `/services/${service.slug}`);
 
-  return [...staticRoutes, ...serviceRoutes].map((route) => ({
+  const priorityFor = (route) => {
+    if (route === '') return 1;
+    if (legalRoutes.includes(route)) return 0.4;
+    if (route.startsWith('/services/')) return 0.8;
+    return 0.9;
+  };
+
+  return [...pageRoutes, ...serviceRoutes, ...legalRoutes].map((route) => ({
     url: `https://krayansh.com${route}`,
     lastModified,
     changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1 : route.startsWith('/services/') ? 0.8 : 0.4,
+    priority: priorityFor(route),
   }));
 }

@@ -1,178 +1,40 @@
-.seo-page {
-  flex: 1;
-  background: var(--dark-background);
-  padding: 120px 2.5rem 5rem;
-}
+/* Service and legal detail pages — Signature design system */
+.seo-page{position:relative;flex:1;overflow:hidden;padding:132px 2.5rem 7rem;background:var(--surface-page);color:var(--n-900)}.seo-page:before{content:'';position:absolute;top:0;left:0;right:0;height:500px;background:var(--n-900)}.seo-page:after{content:'';position:absolute;top:-260px;right:-170px;width:700px;height:700px;border:1px solid rgba(var(--sig-glow-rgb),.15);border-radius:50%;box-shadow:0 0 0 100px rgba(var(--sig-glow-rgb),.025),0 0 0 200px rgba(var(--sig-glow-rgb),.015);pointer-events:none}.seo-page-inner{position:relative;z-index:1;width:min(1120px,100%);margin:auto}.seo-breadcrumbs{display:flex;align-items:center;flex-wrap:wrap;gap:.65rem;margin-bottom:4.6rem;color:rgba(255,255,255,.52);font-size:.75rem}.seo-breadcrumbs a{color:rgba(255,255,255,.75);transition:color .2s}.seo-breadcrumbs a:hover{color:var(--accent-on-dark)}.seo-hero{max-width:880px;padding-bottom:5.5rem}.seo-eyebrow{margin:0 0 1rem;color:var(--accent-on-dark);font-size:.68rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase}.seo-hero h1{max-width:900px;margin:0;font-family:var(--font-display),Georgia,serif;font-size:clamp(3rem,6vw,6rem);font-weight:500;letter-spacing:-.045em;line-height:1;color:white}.seo-hero>p:not(.seo-eyebrow){max-width:720px;margin:1.7rem 0 0;color:rgba(255,255,255,.65);font-size:1.06rem;line-height:1.8}.seo-primary-link{display:inline-flex;align-items:center;margin-top:2.2rem;padding:1rem 1.3rem;border-radius:5px;background:var(--accent);color:white;font-size:.84rem;font-weight:800;transition:transform .25s,background .25s}.seo-primary-link:hover{background:var(--accent-hover);transform:translateY(-2px)}.seo-content-section{display:grid;grid-template-columns:minmax(220px,.7fr) 1.3fr;gap:4rem;padding:4.5rem 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}.seo-content-section h2,.seo-related h2,.legal-page-content h2{margin:0;font-family:var(--font-display),Georgia,serif;font-weight:500;color:var(--n-900)}.seo-content-section h2{font-size:clamp(2rem,3vw,3rem);line-height:1.1}.seo-benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.seo-benefit-grid li{position:relative;padding:1.4rem 1.25rem 1.4rem 3rem;border:1px solid var(--border-subtle);border-radius:5px;background:var(--surface-raised);color:var(--n-600);font-size:.9rem;line-height:1.55}.seo-benefit-grid li:before{content:'+';position:absolute;left:1.2rem;color:var(--accent);font-weight:800}.seo-related{padding-top:4.5rem}.seo-related h2{font-size:clamp(2rem,3vw,3rem)}.seo-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.8rem}.seo-related-grid a{position:relative;min-height:230px;padding:1.5rem;border:1px solid var(--border-subtle);border-radius:5px;background:var(--surface-raised);transition:transform .25s,box-shadow .25s}.seo-related-grid a:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(7,26,40,.09)}.seo-related-grid h3{margin:0;color:var(--n-900);font-family:var(--font-display);font-size:1.35rem;font-weight:500}.seo-related-grid p{margin:.8rem 0 1rem;color:var(--text-secondary);font-size:.86rem;line-height:1.65}.seo-related-grid span{position:absolute;bottom:1.4rem;color:var(--accent);font-size:.78rem;font-weight:800}.legal-hero{padding-bottom:4.5rem}.legal-page-content{max-width:820px;display:flex;flex-direction:column;gap:2.5rem;padding:3.5rem;border:1px solid var(--border-subtle);border-radius:5px;background:var(--surface-raised)}.legal-page-content h2{font-size:1.35rem}.legal-page-content p{margin:.7rem 0 0;color:var(--text-secondary);line-height:1.8}@media(max-width:760px){.seo-page{padding:105px 1.25rem 4rem}.seo-breadcrumbs{margin-bottom:3rem}.seo-hero{padding-bottom:4rem}.seo-content-section{grid-template-columns:1fr;gap:1.7rem;padding:3.5rem 0}.seo-benefit-grid,.seo-related-grid{grid-template-columns:1fr}.seo-related-grid a{min-height:180px}.legal-page-content{padding:1.5rem}}
+/* Compact spacing across service and policy pages */
+.seo-page{padding:108px 2.5rem 4.5rem}.seo-breadcrumbs{margin-bottom:2.75rem}.seo-hero{padding-bottom:3.75rem}.seo-content-section{gap:3rem;padding:3.25rem 0}.seo-related{padding-top:3.25rem}.legal-hero{padding-bottom:3.5rem}.legal-page-content{gap:2rem;padding:2.5rem}
+@media(max-width:760px){.seo-page{padding:96px 1.25rem 3rem}.seo-breadcrumbs{margin-bottom:2rem}.seo-hero{padding-bottom:3rem}.seo-content-section{gap:1.4rem;padding:2.5rem 0}.seo-related{padding-top:2.5rem}.legal-hero{padding-bottom:2.75rem}.legal-page-content{gap:1.5rem;padding:1.5rem}}
 
-.seo-page-inner {
-  width: min(1120px, 100%);
-  margin: 0 auto;
-}
+/* ══════════════════════════════════════════════════════════════════════
+   Service + legal pages joined to the homepage design system:
+   same alignment rail, same tokens, same craft.
+   ══════════════════════════════════════════════════════════════════════ */
 
-.seo-breadcrumbs {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 3rem;
-  font-size: 0.82rem;
-  color: var(--secondary-text);
-}
+/* Share the 1240 rail so page content lines up with the header and footer
+   (these pages sat at 80/1200 while the chrome sat at 32/1248). */
+.seo-page{padding-left:0;padding-right:0}
+.seo-page-inner{width:min(1240px,calc(100% - 4rem))}
+@media(max-width:700px){.seo-page-inner{width:calc(100% - 2.5rem)}}
 
-.seo-breadcrumbs a:hover {
-  color: var(--primary-color);
-}
+/* Dark hero band picks up the same film grain as the homepage. */
+.seo-page:before{background-color:var(--n-900);background-image:var(--sig-grain-dim);background-size:160px 160px}
 
-.seo-hero {
-  max-width: 820px;
-  padding-bottom: 4rem;
-}
+/* Typography matched to the homepage display treatment. */
+.seo-hero h1{letter-spacing:-.05em}
+.seo-content-section h2,.seo-related h2,.legal-page-content h2{letter-spacing:-.035em}
+.seo-eyebrow{font-size:.64rem;letter-spacing:.2em}
+.seo-hero>p:not(.seo-eyebrow){color:var(--text-inverse-2)}
 
-.seo-eyebrow {
-  margin: 0 0 0.7rem;
-  color: var(--primary-color);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
+/* Primary action matched to .sig-primary — white label stays AA-compliant. */
+.seo-primary-link{border-radius:3px;letter-spacing:.03em;background:var(--accent-grad);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),var(--accent-glow);transition:transform .4s var(--sig-ease),box-shadow .4s var(--sig-ease),background .4s var(--sig-ease)}
+.seo-primary-link:hover{background:var(--accent-grad-hover);transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),var(--accent-glow-hover)}
 
-.seo-hero h1 {
-  margin: 0;
-  font-size: clamp(2.4rem, 6vw, 4.8rem);
-  line-height: 1.05;
-  color: var(--main-text);
-}
+/* Cards: hairline + layered shadow instead of a flat border. */
+.seo-benefit-grid li,.seo-related-grid a,.legal-page-content{border-radius:4px;box-shadow:0 1px 2px rgba(7,26,40,.04),0 12px 30px rgba(7,26,40,.05)}
+.seo-benefit-grid li{transition:border-color .3s var(--sig-ease),box-shadow .3s var(--sig-ease)}
+.seo-benefit-grid li:hover{border-color:var(--accent);box-shadow:0 1px 2px rgba(7,26,40,.05),0 16px 36px rgba(7,26,40,.08)}
+.seo-related-grid a{border-radius:4px;transition:transform .35s var(--sig-ease),box-shadow .35s var(--sig-ease),border-color .35s var(--sig-ease)}
+.seo-related-grid a:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 1px 2px rgba(7,26,40,.05),0 22px 48px rgba(7,26,40,.1)}
+.seo-related-grid span{transition:gap .25s var(--sig-ease)}
 
-.seo-hero > p:not(.seo-eyebrow) {
-  max-width: 720px;
-  margin: 1.5rem 0 0;
-  color: var(--secondary-text);
-  font-size: 1.08rem;
-  line-height: 1.8;
-}
-
-.seo-primary-link {
-  display: inline-flex;
-  margin-top: 2rem;
-  padding: 0.9rem 1.4rem;
-  border-radius: 8px;
-  background: var(--primary-color);
-  color: #fff;
-  font-weight: 700;
-}
-
-.seo-content-section {
-  display: grid;
-  grid-template-columns: minmax(220px, 0.7fr) 1.3fr;
-  gap: 3rem;
-  padding: 4rem 0;
-  border-top: 1px solid var(--borders-lines);
-  border-bottom: 1px solid var(--borders-lines);
-}
-
-.seo-content-section h2,
-.seo-related h2,
-.legal-page-content h2 {
-  margin: 0;
-  color: var(--main-text);
-}
-
-.seo-benefit-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.seo-benefit-grid li {
-  position: relative;
-  padding: 1.2rem 1.2rem 1.2rem 2.5rem;
-  border: 1px solid var(--borders-lines);
-  border-radius: 8px;
-  background: var(--section-background);
-  color: var(--main-text);
-}
-
-.seo-benefit-grid li::before {
-  content: '+';
-  position: absolute;
-  left: 1rem;
-  color: var(--primary-color);
-  font-weight: 800;
-}
-
-.seo-related {
-  padding-top: 4rem;
-}
-
-.seo-related-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.seo-related-grid a {
-  padding: 1.4rem;
-  border: 1px solid var(--borders-lines);
-  border-radius: 8px;
-  background: var(--section-background);
-}
-
-.seo-related-grid h3 {
-  margin: 0;
-  color: var(--main-text);
-  font-size: 1rem;
-}
-
-.seo-related-grid p {
-  margin: 0.7rem 0 1rem;
-  color: var(--secondary-text);
-  font-size: 0.88rem;
-  line-height: 1.65;
-}
-
-.seo-related-grid span {
-  color: var(--primary-color);
-  font-size: 0.84rem;
-  font-weight: 700;
-}
-
-.legal-hero {
-  padding-bottom: 2.5rem;
-}
-
-.legal-page-content {
-  max-width: 820px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid var(--borders-lines);
-}
-
-.legal-page-content h2 {
-  font-size: 1.15rem;
-}
-
-.legal-page-content p {
-  margin: 0.55rem 0 0;
-  color: var(--secondary-text);
-  line-height: 1.8;
-}
-
-@media (max-width: 760px) {
-  .seo-page {
-    padding: 100px 1.25rem 4rem;
-  }
-
-  .seo-content-section {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .seo-benefit-grid,
-  .seo-related-grid {
-    grid-template-columns: 1fr;
-  }
-}
+/* Section rules use the shared hairline token. */
+.seo-content-section{border-top-color:var(--border-subtle);border-bottom-color:var(--border-subtle)}

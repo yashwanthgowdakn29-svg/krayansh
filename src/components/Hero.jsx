@@ -1,83 +1,64 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaBolt, FaShieldAlt, FaHeadset } from 'react-icons/fa';
+import { FaArrowRight, FaBolt, FaHeadset, FaShieldAlt } from 'react-icons/fa';
 import bannerImg from '../assets/banner.png';
+import Reveal from './Reveal';
 
-const marqueeItems = [
-  'Software Engineering',
-  'Hardware Design',
-  'IoT Solutions',
-  'AI & Machine Learning',
-  'Embedded Systems',
-  'Cloud & DevOps',
-  'Cybersecurity',
-];
+const marqueeItems = ['Software Engineering','Hardware Design','IoT Solutions','AI & Machine Learning','Embedded Systems','Cloud & DevOps','Cybersecurity'];
+const outcomes = [{value:'01',label:'Integrated team',detail:'Design, software and hardware under one roof'},{value:'02',label:'Built to scale',detail:'Architecture that grows with your ambition'},{value:'03',label:'End-to-end',detail:'From discovery through launch and support'}];
 
 const Hero = () => (
   <section className="hero" id="home">
-    <div className="hero-bg-grid" />
+    <div className="hero-bg-grid" aria-hidden="true" />
     <div className="hero-bg-glow" aria-hidden="true" />
 
     <div className="hero-layout">
-      <div className="hero-content">
-        <span className="hero-tag">Technology &amp; Innovation</span>
+      <Reveal className="hero-content">
+        <div className="hero-overline">
+          <span className="hero-tag">Software services & product innovation</span>
+        </div>
 
         <h1 className="hero-title">
-          <span className="line-outline">Transform</span>
-          <span className="line-solid">Your Business</span>
-          <span className="line-accent">With Us.</span>
+          <span className="line-solid">Digital solutions</span>
+          <span className="line-outline">for today&apos;s business.</span>
+          <span className="line-accent">Products for tomorrow.</span>
         </h1>
 
         <p className="hero-desc">
-          Krayansh delivers high-performance software, hardware, IoT, and AI solutions
-          engineered for growth, security, and long-term reliability.
+          We design and engineer dependable software, connected systems and digital platforms for organisations ready to grow—while investing in the products of tomorrow.
         </p>
 
         <div className="hero-actions">
-          <Link className="hbtn hbtn-primary" href="/#services">
-            Explore Services
-          </Link>
-          <Link className="hbtn hbtn-ghost" href="/#contact">
-            Start a Project <span className="arrow">-&gt;</span>
-          </Link>
+          <Link className="hbtn hbtn-primary" href="/#contact">Discuss your requirements <FaArrowRight /></Link>
+          <Link className="hbtn hbtn-ghost" href="/#services">View our services</Link>
         </div>
 
-        <div className="hero-chips">
-          <span className="hero-chip"><FaBolt /> Fast Delivery</span>
-          <span className="hero-chip"><FaShieldAlt /> Secure Systems</span>
-          <span className="hero-chip"><FaHeadset /> Responsive Support</span>
+        <div className="hero-chips" aria-label="Our commitments">
+          <span className="hero-chip"><FaBolt /> Agile delivery</span>
+          <span className="hero-chip"><FaShieldAlt /> Secure by design</span>
+          <span className="hero-chip"><FaHeadset /> Long-term support</span>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="hero-art">
+      <Reveal className="hero-art" delay={0.15}>
         <div className="hero-img-card">
-          <div className="hero-img-card-border" aria-hidden="true" />
-          <Image
-            src={bannerImg}
-            alt="Krayansh software, hardware, IoT and artificial intelligence engineering"
-            className="hero-img"
-            priority
-            sizes="(max-width: 1100px) 92vw, 50vw"
-          />
+          <Image src={bannerImg} alt="Krayansh engineering software, hardware, IoT and AI products" className="hero-img" priority sizes="(max-width: 1100px) 92vw, 48vw" />
           <div className="hero-img-shine" aria-hidden="true" />
-          <div className="hero-floating-tag hero-floating-tag--tl">
-            <span className="hft-dot" />
-            AI &amp; Hardware
+          <div className="hero-visual-caption">
+            <span>Services today. Products tomorrow.</span>
+            <strong>Engineering dependable solutions with a long-term product vision.</strong>
           </div>
-          <div className="hero-floating-tag hero-floating-tag--br">
-            <span className="hft-dot" />
-            Software Engineering
-          </div>
+          <div className="hero-orbit" aria-hidden="true"><span>K</span></div>
         </div>
-      </div>
+      </Reveal>
     </div>
+
+    <Reveal className="hero-outcomes" delay={0.25}>{outcomes.map((item) => <div className="hero-outcome" key={item.value}><span>{item.value}</span><div><strong>{item.label}</strong><p>{item.detail}</p></div></div>)}</Reveal>
 
     <div className="hero-marquee-wrap" aria-hidden="true">
       <div className="hero-marquee-track">
         {[...marqueeItems, ...marqueeItems].map((item, index) => (
-          <span className="hero-marquee-item" key={`${item}-${index}`}>
-            <span className="hero-marquee-dot">+</span> {item}
-          </span>
+          <span className="hero-marquee-item" key={`${item}-${index}`}><span className="hero-marquee-dot">◆</span>{item}</span>
         ))}
       </div>
     </div>
