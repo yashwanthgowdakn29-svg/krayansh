@@ -1,7 +1,17 @@
-import { useState, useEffect } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import logo from '../assets/Logo.png';
-import './Header.css';
+
+const navigation = [
+  { href: '/#home', label: 'Home' },
+  { href: '/#about', label: 'About' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#contact', label: 'Contact' },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,45 +19,46 @@ const Header = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [isMenuOpen]);
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
 
   return (
     <header className={`header${scrolled ? ' scrolled' : ''}`}>
       <div className="header-container">
-        <div className="logo-container">
-          <img src={logo} alt="Krayansh Logo" className="logo" />
-        </div>
+        <Link href="/#home" className="logo-container" aria-label="Krayansh home">
+          <Image src={logo} alt="Krayansh" className="logo" priority sizes="120px" />
+        </Link>
 
-        <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
+        <nav className={`nav ${isMenuOpen ? 'active' : ''}`} aria-label="Primary navigation">
           <ul className="nav-list">
-            {['home', 'about', 'services', 'contact'].map((s) => (
-              <li key={s}>
-                <a onClick={() => scrollToSection(s)} className="nav-link">
-                  {s.charAt(0).toUpperCase() + s.slice(1)}
-                </a>
+            {navigation.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} onClick={() => setIsMenuOpen(false)} className="nav-link">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
-          <button className="nav-cta" onClick={() => scrollToSection('contact')}>
+          <Link className="nav-cta" href="/#contact" onClick={() => setIsMenuOpen(false)}>
             Let&apos;s Talk
-          </button>
+          </Link>
         </nav>
 
-        <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+        <button
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+        >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>

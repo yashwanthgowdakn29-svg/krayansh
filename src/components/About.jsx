@@ -1,9 +1,8 @@
-import { FaBullseye, FaEye, FaStar } from 'react-icons/fa';
+import Image from 'next/image';
 import aboutBanner from '../assets/aboutbanner.png';
-import missionImg  from '../assets/mission.jpg';
-import visionImg   from '../assets/vision.png';
-import valuesImg   from '../assets/leadership.png';
-import './About.css';
+import missionImg from '../assets/mission.jpg';
+import visionImg from '../assets/vision.png';
+import valuesImg from '../assets/leadership.png';
 
 const pillars = [
   {
@@ -16,25 +15,27 @@ const pillars = [
     num: '02',
     img: visionImg,
     title: 'Our Vision',
-    text: 'To become the premier technology partner for businesses worldwide, shaping tomorrows digital landscape.',
+    text: 'To become a trusted technology partner for businesses worldwide and help shape the digital future.',
   },
   {
     num: '03',
     img: valuesImg,
     title: 'Our Values',
-    text: 'Innovation, Quality, Integrity, and unwavering commitment to Customer Success.',
+    text: 'Innovation, quality, integrity, and an unwavering commitment to customer success.',
   },
 ];
 
-const stats = [
-  { num: '24/7', label: 'Support Available' },
+const highlights = [
+  { value: '24/7', label: 'Support' },
+  { value: '100%', label: 'Client Focus' },
+  { value: 'Always', label: 'Innovation' },
 ];
 
 const About = () => (
   <section className="about" id="about">
-    <div className="about-inner">
+    <div className="about-bg-glow" aria-hidden="true" />
 
-      {/* Top split: text left, image right */}
+    <div className="about-inner">
       <div className="about-split">
         <div className="about-text-col">
           <div className="about-heading-group">
@@ -44,48 +45,63 @@ const About = () => (
               <span className="about-title-accent">What Drives Us</span>
             </h2>
           </div>
+
           <p className="about-intro">
-            Krayansh is a technology company dedicated to delivering innovative
-            software and hardware solutions — turning ideas into reality for
-            businesses that refuse to settle for ordinary.
+            Krayansh is a technology company in Bengaluru delivering software and
+            hardware solutions that turn ambitious ideas into practical products.
           </p>
-          {/* Stats inside text col */}
-          <div className="about-stats">
-            {stats.map((s, i) => (
-              <div className="astat" key={i}>
-                <span className="astat-num">{s.num}</span>
-                <span className="astat-label">{s.label}</span>
+
+          <div className="about-highlights">
+            {highlights.map((highlight) => (
+              <div className="about-hl" key={highlight.label}>
+                <span className="about-hl-val">{highlight.value}</span>
+                <span className="about-hl-label">{highlight.label}</span>
               </div>
             ))}
           </div>
         </div>
-        <div className="about-img-col">
-          <img src={aboutBanner} alt="About Krayansh" className="about-banner-img" />
-          <div className="about-img-overlay" />
+
+        <div className="about-img-frame">
+          <div className="about-img-card-border" aria-hidden="true" />
+          <div className="about-img-col">
+            <Image
+              src={aboutBanner}
+              alt="Krayansh technology engineering capabilities"
+              className="about-banner-img"
+              sizes="(max-width: 900px) 100vw, 50vw"
+            />
+            <div className="about-img-overlay" />
+          </div>
+          <div className="about-img-tag about-img-tag--tl">
+            <span className="about-tag-dot" /> Krayansh
+          </div>
+          <div className="about-img-tag about-img-tag--br">
+            <span className="about-tag-dot" /> Bengaluru, India
+          </div>
         </div>
       </div>
 
-      {/* Pillars */}
       <div className="pillars">
-        {pillars.map((p) => (
-          <div className="pillar" key={p.num}>
-            {p.img ? (
-              <div className="pillar-img-wrap">
-                <img src={p.img} alt={p.title} className="pillar-img" />
-                <div className="pillar-img-overlay" />
-              </div>
-            ) : (
-              <div className="pillar-icon-wrap">
-                <div className="pillar-icon">{p.icon}</div>
-              </div>
-            )}
-            <span className="pillar-num" aria-hidden="true">{p.num}</span>
-            <h3 className="pillar-title">{p.title}</h3>
-            <p className="pillar-text">{p.text}</p>
-          </div>
+        {pillars.map((pillar) => (
+          <article className="pillar" key={pillar.num}>
+            <div className="pillar-img-wrap">
+              <Image
+                src={pillar.img}
+                alt={`${pillar.title} at Krayansh`}
+                className="pillar-img"
+                fill
+                sizes="(max-width: 900px) 100vw, 33vw"
+              />
+              <div className="pillar-img-overlay" />
+              <span className="pillar-num" aria-hidden="true">{pillar.num}</span>
+            </div>
+            <div className="pillar-body">
+              <h3 className="pillar-title">{pillar.title}</h3>
+              <p className="pillar-text">{pillar.text}</p>
+            </div>
+          </article>
         ))}
       </div>
-
     </div>
   </section>
 );
